@@ -22,7 +22,7 @@ return {
           { icon = " ", key = "n", desc = "[n]ew file", action = ":ene | startinsert" },
           { icon = " ", key = "g", desc = "live [g]rep", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = "󰋖 ", key = "h", desc = "find [h]elp", action = ":lua Snacks.dashboard.pick('help')" },
-          { icon = " ", key = "m", desc = "find [m]en", action = ":lua Snacks.dashboard.pick('man')" },
+          { icon = " ", key = "m", desc = "find [m]en", action = ":Telescope man_pages" },
           -- { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           { icon = " ", key = "c", desc = "nvim [c]onfig", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
           { icon = " ", key = "s", desc = "[r]estore session", section = "session" },
