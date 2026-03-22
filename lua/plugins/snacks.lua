@@ -60,5 +60,12 @@ return {
         { section = "startup" },
       },
     },
+    terminal = {
+      win = {
+        keys = {
+          hide_slash = { "<C-/>", mode = { "t" }, false },
+        },
+      },
+    },
   },
 }

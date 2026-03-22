@@ -13,6 +13,7 @@ nomap("n", "<leader>K")
 nomap("n", "<leader>l")
 nomap("n", "<leader>L")
 nomap("n", "<leader>fT")
+-- nomap({ "n", "t" }, "<C-/>")
 
 -- HACK: map
 
@@ -40,6 +41,9 @@ map("n", "<leader>lL", function()
 end, { desc = "LazyVim Changelog" }) -- LazyVim Changelog
 
 map("n", "<C-q>", "<cmd>q<cr>", { desc = "Quit" }) -- quit
+map("n", ";", ":")
+
+map("n", "gl", "g]1<CR><escape>", { desc = "[l]ocal link" }) -- disables default. This is used in: help, man, markdown, ...
 
 map("n", "<leader>ci", vim.show_pos, { desc = "TS Inspect" }) -- Treesitter inspect
 map("n", "<leader>cI", function()
@@ -47,14 +51,17 @@ map("n", "<leader>cI", function()
   vim.api.nvim_input("I")
 end, { desc = "TS Inspect Tree" })
 
--- map("n", "<leader>T", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal" })
 map("n", "<leader>T", function()
-  Snacks.terminal(nil, { cwd = LazyVim.root() })
-end, { desc = "Terminal(root dir)" })
-map("n", "<c-/>", function()
   Snacks.terminal.focus()
-  vim.cmd("startinsert")
-end, { desc = "Terminal(cwd)" })
+  vim.cmd("startinsert") -- why is this not default?
+end, { desc = "Terminal" })
+
+vim.keymap.set("n", "<C-/>", function()
+  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({ -- insane combo
+    winblend = 10,
+    previewer = false,
+  }))
+end, { desc = "Fzf [/] current buf" })
 
 -- tabs
 map("n", "<leader><tab>e", "<cmd>tablast<cr>", { desc = "tab end" })

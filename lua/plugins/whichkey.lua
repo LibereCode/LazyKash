@@ -16,6 +16,7 @@ return { -- Useful plugin to show you pending keybinds.
       { "<leader>o", group = "[o]rg-mode", mode = { "n" } },
       { "<leader>s", group = "search/[s]elect", mode = { "n", "v" } },
       { "<leader>f", group = "find/[f]iles", mode = { "n", "v" } },
+      { "<localleader>", group = "Local Leader", mode = { "n", "v" } },
 
       -- <leader> subgroups
       { "<leader>bo", group = "order", mode = { "n" } },
