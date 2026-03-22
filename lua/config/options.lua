@@ -32,11 +32,11 @@ opt.fcs = {
 opt.mouse = "nv" -- Enable mouse mode -- a=all ; nv=normal+visual
 opt.slm = "mouse" -- select mode instead of visual with mouse
 
-opt.sw = 3 -- 2 -- Size of an indent
-opt.ts = 3 -- Number of spaces tabs count for
+opt.sw = 2 -- 2 -- Size of an indent
+opt.ts = 2 -- Number of spaces tabs count for
 -- opt.shm:append({ W = true, I = true, c = true, C = true }) -- append to shortmess, which is truncation of terms
 opt.so = 10 -- 4 -- Lines of context
-opt.siso = 40 -- 8 40 723 -- Columns of context -- very big(723)=always centered(unless at left)
+opt.siso = 30 -- 8 723 -- Columns of context -- very big(723)=always centered(unless at left)
 
 opt.ww:append("<>[]hl") -- wraps around at ends (<BS> and <space> is default)
 

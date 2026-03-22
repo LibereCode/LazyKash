@@ -69,6 +69,9 @@ return { -- "plaintext", like .txt, .md, .org
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
     ft = { "org" },
+    keys = {
+      { "<leader>oh", mode = "n", "<CMD>Org help<CR>", desc = "help" },
+    },
     opts = {
       -- Setup orgmode
       org_agenda_files = "~/Notes/Org/**/*",
