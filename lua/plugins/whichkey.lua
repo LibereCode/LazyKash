@@ -10,7 +10,7 @@ return { -- Useful plugin to show you pending keybinds.
       -- HACK: add more groups below
 
       -- <leader>
-      { "<leader>i", group = "insert", mode = { "n" } },
+      { "<leader>i", group = "[i]nspect/info", mode = { "n" } },
       { "<leader>l", group = "lazy", mode = { "n" } },
       { "<leader>m", group = "text/[m]arkdown", mode = { "n" } },
       { "<leader>o", group = "[o]rg-mode", mode = { "n" } },

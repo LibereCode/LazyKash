@@ -3,51 +3,60 @@ return { -- "plaintext", like .txt, .md, .org
   {
     "jakewvincent/mkdnflow.nvim",
     ft = { "markdown", "rmd" },
-    opts = {
-      mappings = {
-        MkdnFollowLink = false, -- Disable default
-        MkdnEnter = false,
-        MkdnYankAnchorLink = false,
-        MkdnYankFileAnchorLink = false,
-        MkdnToggleToDo = false,
-        MkdnNewListItem = false,
-        MkdnExtendList = false,
-        MkdnUpdateNumbering = false,
-        MkdnTableNextRow = false,
-        MkdnTableNewRowBelow = false,
-        MkdnTableNewRowAbove = false,
-        MkdnTableNewColAfter = false,
-        MkdnTableNewColBefore = false,
-        MkdnTableDeleteRow = false,
-        MkdnTableDeleteCol = false,
-        MkdnFoldSection = false,
-        MkdnUnfoldSection = false,
-        MkdnTab = false,
-        MkdnSTab = false,
-        MkdnCreateLink = false,
-        MkdnCreateLinkFromClipboard = false,
+    opts = {},
+    keys = function() -- replace with new table of mappings
+      local function mmap(keys, cmd, desc)
+        return { keys, cmd, ft = "markdown", desc = desc }
+      end
+      return {
+        mmap("<leader>ml", "<Cmd>MkdnFollowLink<CR>", "Follow link"),
+        mmap("<CR>", "<Cmd>MkdnEnter<CR>", "Mkdn enter"),
+        mmap("<leader>my", "", "yank"),
+        mmap("<leader>mya", "<Cmd>MkdnYankAnchorLink<CR>", "Yank Anchorlink"),
+        mmap("<leader>myf", "<Cmd>MkdnYankFileAnchorLink<CR>", "Yank FileAnchorlink"),
+        mmap("<leader>mt", "<Cmd>MkdnToggleToDo<CR>", "Toggle TODO"),
+        mmap("<leader>mn", "<Cmd>MkdnUpdateNumbering<CR>", "Update Numbering"),
+        mmap("<leader>mi", "", "insert table"),
+        mmap("<leader>mir", "<Cmd>MkdnTableNewRowBelow<CR>", "Table new Row Down"),
+        mmap("<leader>miR", "<Cmd>MkdnTableNewRowAbove<CR>", "Table new Row Up"),
+        mmap("<leader>mic", "<Cmd>MkdnTableNewColAfter<CR>", "Table new Column Right"),
+        mmap("<leader>miC", "<Cmd>MkdnTableNewColBefore<CR>", "Table new Column Left"),
+        mmap("<leader>md", "", "table delete..."),
+        mmap("<leader>mdr", "<Cmd>MkdnTableDeleteRow<CR>", "Table Delete Row"),
+        mmap("<leader>mdc", "<Cmd>MkdnTableDeleteCol<CR>", "Table Delete Column"),
+        mmap("<leader>mf", "<Cmd>MkdnFoldSection<CR>", "md Fold"),
+        mmap("<leader>mF", "<Cmd>MkdnUnfoldSection<CR>", "md UnFold"),
+        mmap("<leader>mL", "<Cmd>MkdnCreateLinkFromClipboard<CR>", "Create [L]ink Clipboard"),
+      }
+    end,
+  },
+
+  -- INFO: markdownlint-cli2 can be in-document-config, ex: -- <!-- markdownlint-disable{-position-rules} {specific-rule} -->
+  -- THESE DO THE SAME:
+  --
+  -- 1.
+  -- <!-- markdownlint-disable-next-line no-space-in-emphasis -->
+  -- space * in * emphasis
+  -- 2.
+  -- space * in * emphasis <!-- markdownlint-disable-line no-space-in-emphasis -->
+  -- 3.
+  -- <!-- markdownlint-disable no-space-in-emphasis -->
+  -- space * in * emphasis
+  -- <!-- markdownlint-enable no-space-in-emphasis -->
+
+  { -- INFO: pretty goated, ngl. For now better than `Markview.nvim`. (btw, is in LazyExtras-markdown)
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      { "nvimtools/none-ls.nvim", enabled = false },
+    },
+    ft = {},
+    keys = {
+      {
+        "<leader>ms",
+        "<cmd>RenderMarkdown preview<cr>",
+        desc = "[s]plit-preview",
       },
     },
-    keys = {
-      { "<leader>ml", "<Cmd>MkdnFollowLink<CR>", ft = "markdown", desc = "Follow link" },
-      { "<CR>", "<Cmd>MkdnEnter<CR>", ft = "markdown", desc = "Mkdn enter" },
-      { "<leader>mya", "<Cmd>MkdnYankAnchorLink<CR>", ft = "markdown", desc = "Yank Anchorlink" },
-      { "<leader>myf", "<Cmd>MkdnYankFileAnchorLink<CR>", ft = "markdown", desc = "Yank FileAnchorlink" },
-      { "<leader>mt", "<Cmd>MkdnToggleToDo<CR>", ft = "markdown", desc = "Toggle TODO" },
-      { "<leader>mn", "<Cmd>MkdnUpdateNumbering<CR>", ft = "markdown", desc = "Update Numbering" },
-      { "<leader>mir", "<Cmd>MkdnTableNewRowBelow<CR>", ft = "markdown", desc = "Table new Row Down" },
-      { "<leader>miR", "<Cmd>MkdnTableNewRowAbove<CR>", ft = "markdown", desc = "Table new Row Up" },
-      { "<leader>mic", "<Cmd>MkdnTableNewColAfter<CR>", ft = "markdown", desc = "Table new Column Right" },
-      { "<leader>miC", "<Cmd>MkdnTableNewColBefore<CR>", ft = "markdown", desc = "Table new Column Left" },
-      { "<leader>mdr", "<Cmd>MkdnTableDeleteRow<CR>", ft = "markdown", desc = "Table Delete Row" },
-      { "<leader>mdc", "<Cmd>MkdnTableDeleteCol<CR>", ft = "markdown", desc = "Table Delete Column" },
-      { "<leader>mf", "<Cmd>MkdnFoldSection<CR>", ft = "markdown", desc = "md Fold" },
-      { "<leader>mF", "<Cmd>MkdnUnfoldSection<CR>", ft = "markdown", desc = "md UnFold" },
-      { "<leader>mp", "<Cmd>MkdnCreateLinkFromClipboard<CR>", ft = "markdown", desc = "Create Link Clipboard" },
-    },
-  },
-  { -- TODO: change to 'OXY2DEV/markview.nvim'
-    "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       code = {
         sign = true,
@@ -62,6 +71,26 @@ return { -- "plaintext", like .txt, .md, .org
         enabled = true,
       },
     },
+  },
+
+  { -- previews on web-browser
+    "iamcco/markdown-preview.nvim",
+    keys = function()
+      return {
+        {
+          "<localleader>p",
+          ft = "markdown",
+          "<cmd>MarkdownPreviewToggle<cr>",
+          desc = "Markdown Preview",
+        },
+        {
+          "<leader>mp",
+          ft = "markdown",
+          "<cmd>MarkdownPreviewToggle<cr>",
+          desc = "Preview",
+        },
+      }
+    end,
   },
 
   -- orgmode.org

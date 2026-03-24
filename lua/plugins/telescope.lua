@@ -4,7 +4,8 @@ return { -- change some telescope options and a keymap to browse plugin files
     -- add a keymap to browse plugin files
     return {
       -- stylua: ignore start
-      { "<leader>ft", "<CMD>Telescope<CR>", desc = "[t]elescope builtins"},
+      { "<leader>ft", "<CMD>Telescope<CR>", desc = "[t]elescope.builtins"},
+      { "<leader>ss", "<CMD>Telescope<CR>", desc = "[s]elect Telescope"},
 
       { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" }, -- TODO: in >b
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
@@ -62,8 +63,8 @@ return { -- change some telescope options and a keymap to browse plugin files
       { "<leader>sW", LazyVim.pick("grep_string", { word_match = "-w" }), desc = "Word" },
       { "<leader>sw", LazyVim.pick("grep_string", { root = false }), mode = "x", desc = "selection(cwd)" },
       { "<leader>sW", LazyVim.pick("grep_string"), mode = "x", desc = "selection" },
-      { "<leader>ss", function() require("telescope.builtin").lsp_document_symbols({ symbols = LazyVim.config.get_kind_filter(), }) end, desc = "symbol" },
-      { "<leader>sS", function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ symbols = LazyVim.config.get_kind_filter(), }) end, desc = "Symbol(Workspace)" },
+      { "<leader>sy", function() require("telescope.builtin").lsp_document_symbols({ symbols = LazyVim.config.get_kind_filter(), }) end, desc = "s[y]mbol" },
+      { "<leader>sY", function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ symbols = LazyVim.config.get_kind_filter(), }) end, desc = "S[Y]MBOL(Workspace)" },
 
       -- stylua: ignore end
     }
