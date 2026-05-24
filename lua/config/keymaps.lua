@@ -45,12 +45,6 @@ map("n", ";", ":")
 
 map("n", "gl", "g]1<CR><escape>", { desc = "[l]ocal link" }) -- disables default. This is used in: help, man, markdown, ...
 
-map("n", "<leader>ct", vim.show_pos, { desc = "TS Inspect" }) -- Treesitter inspect
-map("n", "<leader>cT", function()
-  vim.treesitter.inspect_tree()
-  vim.api.nvim_input("I")
-end, { desc = "TS Inspect Tree" })
-
 map("n", "<leader>T", function()
   Snacks.terminal.focus()
   vim.cmd("startinsert") -- why is this not default?
@@ -90,3 +84,8 @@ map("n", "<leader>qx", "<CMD>w <BAR> so<CR>", { desc = "write & [x]sauce" }) -- 
 -- code[<leader>c]
 map("n", "<leader>cI", "<CMD>LspInfo<CR>")
 map("n", "<leader>cL", "<CMD>LspLog<CR>")
+map("n", "<leader>ct", vim.show_pos, { desc = "TS Inspect" }) -- Treesitter inspect
+map("n", "<leader>cT", function()
+  vim.treesitter.inspect_tree()
+  vim.api.nvim_input("I")
+end, { desc = "TS Inspect Tree" })

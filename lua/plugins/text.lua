@@ -31,9 +31,10 @@ return { -- "plaintext", like .txt, .md, .org
     end,
   },
 
-  -- INFO: markdownlint-cli2 can be in-document-config, ex: -- <!-- markdownlint-disable{-position-rules} {specific-rule} -->
-  -- THESE DO THE SAME:
+  -- INFO: markdownlint-cli2 (linter for markdown) can be in-document-config,
+  -- ex: -- <!-- markdownlint-disable{-position-rules} {specific-rule} -->
   --
+  -- THESE DO THE SAME:
   -- 1.
   -- <!-- markdownlint-disable-next-line no-space-in-emphasis -->
   -- space * in * emphasis
@@ -93,7 +94,7 @@ return { -- "plaintext", like .txt, .md, .org
     end,
   },
 
-  -- orgmode.org
+  -- orgmode.org -- NOTE: would rather just use markdown, not gonna ngl
   {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
@@ -107,15 +108,16 @@ return { -- "plaintext", like .txt, .md, .org
       org_default_notes_file = "~/Notes/Org/refile.org",
     },
   },
+  --
   -- {
-  --     "nvim-neorg/neorg",
-  --     -- lazy-load on filetype
-  --     ft = "norg",
-  --     -- options for neorg. This will automatically call `require("neorg").setup(opts)`
-  --     opts = {
-  --         load = {
-  --             ["core.defaults"] = {},
-  --         },
+  --   "nvim-neorg/neorg",
+  --   -- lazy-load on filetype
+  --   ft = "norg",
+  --   -- options for neorg. This will automatically call `require("neorg").setup(opts)`
+  --   opts = {
+  --     load = {
+  --       ["core.defaults"] = {},
   --     },
+  --   },
   -- },
 }

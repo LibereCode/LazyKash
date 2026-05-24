@@ -49,7 +49,7 @@ return {
       -- '3rd/image.nvim', -- allows image view in preview
     },
     keys = {
-      { "<leader>e", ":Neotree float reveal toggle<CR>", desc = "float-N[e]oTree toggle", silent = true },
+      { "<leader>e", ":Neotree float reveal toggle<CR>", desc = "float-N[e]oTree", silent = true },
       { "<C-e>", ":Neotree left reveal<CR>", desc = "left N[e]oTree reveal", silent = true },
     },
     opts = { -- https://github.com/nvim-neo-tree/neo-tree.nvim?tab=readme-ov-file#configuration
